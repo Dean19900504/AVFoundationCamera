@@ -7,14 +7,17 @@
 //
 
 #import "AVFoundationCameraAppDelegate.h"
+#import "AVFoundationCameraViewController.h"
 
 @implementation AVFoundationCameraAppDelegate
 
 @synthesize window = _window;
+@synthesize controller = _controller;
 
 - (void)dealloc
 {
     [_window release];
+    [_controller release];
     [super dealloc];
 }
 
@@ -23,6 +26,10 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    self.controller = [[[AVFoundationCameraViewController alloc] init] autorelease];
+    [self.window addSubview:self.controller.view];
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
